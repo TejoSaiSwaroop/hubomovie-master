@@ -55,8 +55,8 @@ const [user,setUser]  = useState(undefined);
               </>
             ) : (
               <h1 className="not-available">
-                No TV Shows avaialble for the selected genre. Please select a
-                different genre.
+                No TV Shows available for the selected genre. Try another
+                 genre.
               </h1>
             )}
           </div>

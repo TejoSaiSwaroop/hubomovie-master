@@ -57,7 +57,7 @@ export default function signup() {
         }
         
       </div>
-      <button onClick={handleSignIn}>Signup</button>
+      <button onClick={handleSignIn}>Sign up</button>
     </div>
     </div>
   </Container>
