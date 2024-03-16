@@ -3,7 +3,7 @@ import styled from "styled-components";
 import CardSlider from "./CardSlider";
 export default function Slider({ movies }) {
   const getMoviesFromRange = (from, to) => {
-    return movies.slice(from, to);
+    return movies ? movies.slice(from, to) : [];
   };
   return (
     <Container> 
@@ -18,14 +18,14 @@ export default function Slider({ movies }) {
 }
 
 const Container = styled.div`
-.trending-now .card {
-  background-color: #ff4081;
-  color: #098de5;
+.trending-now  {
+  background-color: black;
+  color: black;
 }
 
 .new-releases .card {
   background-color: #673ab7;
-  color: white;
+  color: black;
 }
 
 .blockbuster-movies .card {

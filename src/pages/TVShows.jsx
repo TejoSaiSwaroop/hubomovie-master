@@ -7,7 +7,6 @@ import { firebaseAuth } from '../utils/firebase-config';
 import styled from 'styled-components';
 import Navbar from '../components/Navbar';
 import Slider from '../components/Slider';
-import NotAvailable from '../components/NotAvailable';
 import SelectGenre from '../components/SelectGenre';
 
 
@@ -22,16 +21,17 @@ export default function TVShows() {
 
   
   useEffect(()=>{
-    if(!genres.length)  dispatch(getGenres());
-  },[]);
+    if(!genres?.length)  dispatch(getGenres()); 
+  },[dispatch, genres?.length]);
   
   useEffect(()=>{
     if(genresLoaded)
      { 
       dispatch(fetchMovies({ genres, type:"tv" }))
     };
-    },[genresLoaded])
+    },[dispatch, genres, genresLoaded])
   
+// eslint-disable-next-line no-unused-vars
 const [user,setUser]  = useState(undefined);
 
     onAuthStateChanged(firebaseAuth, (currentUser) => {

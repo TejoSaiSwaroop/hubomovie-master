@@ -79,7 +79,7 @@ async({genre,type},thunkApi)=>{
         return movies; 
     })
 
-    export const removeMovieFromLiked = createAsyncThunk("hubomovie/deleteLiked", async({movieId,email}) =>{
+    export const removeMovieFromLiked = createAsyncThunk("hubomovie/deleteLiked", async({email,movieId}) =>{
         const {data:{movies}} = await axios.put(`http://localhost:5000/api/user/delete`,{
             email,movieId});
         return movies; 

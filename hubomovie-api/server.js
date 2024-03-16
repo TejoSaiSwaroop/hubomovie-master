@@ -9,10 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 mongoose
-  .connect("mongodb://localhost:27017/hubomovie", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect("mongodb://localhost:27017/hubomovie")
   .then(() => {
     console.log("DB Connection Successfull");
   })

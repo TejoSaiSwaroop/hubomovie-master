@@ -1,27 +1,28 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
+import { IoPlayCircleSharp } from "react-icons/io5";
+import { AiOutlinePlus } from "react-icons/ai";
+import { RiThumbUpFill, RiThumbDownFill } from "react-icons/ri";
+import { BiChevronDown } from "react-icons/bi";
+import { BsCheck } from "react-icons/bs";
+import axios from "axios";
+import { onAuthStateChanged } from "firebase/auth";
+import { firebaseAuth } from "../utils/firebase-config";
+import { useDispatch } from "react-redux";
+import { removeMovieFromLiked } from "../store";
 import video from "../assets/video.mp4";
-import {IoPlayCircleSharp} from "react-icons/io5";
-import {RiThumbUpFill,RiThumbDownFill} from "react-icons/ri";
-import { BsCheck } from 'react-icons/bs';
-import {AiOutlinePlus} from "react-icons/ai"
-import {BiChevronDown} from "react-icons/bi";
-import {onAuthStateChanged } from 'firebase/auth';
-import { firebaseAuth } from '../utils/firebase-config';
-import axios from 'axios';
-import { useDispatch } from 'react-redux';
-import { removeMovieFromLiked } from '../store';
 
 
 
-export default React.memo ( function Card({movieData,isLiked = false}) {
-    const [isHovered,setIsHovered ] = useState(false);
+export default React.memo ( function Card({index,movieData,isLiked = false}) {
     const navigate = useNavigate();
-    const [email , setEmail] = useState(undefined);
     const dispatch = useDispatch();
+    const [isHovered,setIsHovered ] = useState(false);
+    const [email , setEmail] = useState(undefined);
+
     onAuthStateChanged(firebaseAuth, (currentUser) => {
-        if (currentUser) setEmail(currentUser.email);
+        if (currentUser){ setEmail(currentUser.email);}
         else navigate("/login");
       })
 
@@ -29,7 +30,7 @@ export default React.memo ( function Card({movieData,isLiked = false}) {
 
    const addToList = async () => {
     try{
-    await axios.post("http://localhost:5000/api/user/add",{email,data:movieData})
+    await axios.post("http://localhost:5000/api/user/add",{email,data:movieData,})
     }
     catch(err){
         console.log(err);
@@ -65,7 +66,7 @@ export default React.memo ( function Card({movieData,isLiked = false}) {
                               <RiThumbDownFill title="Dislike" />
                               {
                                 isLiked ? (
-                                    <BsCheck title='Remove from List' onClick={()=> dispatch(removeMovieFromLiked({movieId:movieData.id}))} />) : (<AiOutlinePlus title='Add to my list' onClick={addToList}/>)
+                                    <BsCheck title='Remove from List' onClick={()=> dispatch(removeMovieFromLiked({movieId:movieData.id, email}))} />) : (<AiOutlinePlus title='Add to my list' onClick={addToList}/>)
                               }
                             </div>
                             <div className="info">
