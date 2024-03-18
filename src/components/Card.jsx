@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { IoPlayCircleSharp } from "react-icons/io5";
-import { AiOutlinePlus } from "react-icons/ai";
 import { RiThumbUpFill, RiThumbDownFill } from "react-icons/ri";
 import { BiChevronDown } from "react-icons/bi";
-import { BsCheck } from "react-icons/bs";
+import { BsXSquareFill,BsPlusSquareFill } from "react-icons/bs";
 import axios from "axios";
 import { onAuthStateChanged } from "firebase/auth";
 import { firebaseAuth } from "../utils/firebase-config";
@@ -66,7 +65,7 @@ export default React.memo ( function Card({index,movieData,isLiked = false}) {
                               <RiThumbDownFill title="Dislike" />
                               {
                                 isLiked ? (
-                                    <BsCheck title='Remove from List' onClick={()=> dispatch(removeMovieFromLiked({movieId:movieData.id, email}))} />) : (<AiOutlinePlus title='Add to my list' onClick={addToList}/>)
+                                    <BsXSquareFill title='Remove from List' onClick={()=> dispatch(removeMovieFromLiked({movieId:movieData.id, email}))} />) : (<BsPlusSquareFill title='Add to my list' onClick={addToList}/>)
                               }
                             </div>
                             <div className="info">
