@@ -10,7 +10,7 @@ export default function Slider({ movies }) {
      <CardSlider className="trending-now" data={getMoviesFromRange(0, 10)} title="Trending Now" />
     <CardSlider className="new-releases" data={getMoviesFromRange(10, 20)} title="New Releases" />
     <CardSlider className="blockbuster-movies" data={getMoviesFromRange(20, 30)} title="Blockbuster Movies" />
-    <CardSlider className="popular-on-netflix" data={getMoviesFromRange(30, 40)} title="Popular on Netflix" />
+    <CardSlider className="popular-on-hubomovie" data={getMoviesFromRange(30, 40)} title="Popular on HubOMovie" />
     <CardSlider className="action-movies" data={getMoviesFromRange(40, 50)} title="Action Movies" />
     <CardSlider className="epics" data={getMoviesFromRange(50, 60)} title="Epics" />
     </Container>
@@ -33,7 +33,7 @@ const Container = styled.div`
   color: white;
 }
 
-.popular-on-netflix .card {
+.popular-on-hubomovie .card {
   background-color: #2196f3;
   color: white;
 }

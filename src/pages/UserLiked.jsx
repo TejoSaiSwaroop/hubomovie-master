@@ -12,7 +12,6 @@ import SelectGenre from '../components/SelectGenre';
 import Card from '../components/Card';
 
 
-
 export default function UserLiked() {
     const [ isScrolled, setisScrolled] = useState(false);
     const navigate = useNavigate();
@@ -27,7 +26,7 @@ export default function UserLiked() {
       })
 
     const  dispatch = useDispatch();
-
+    
   
   useEffect(()=>{
   if(email) {

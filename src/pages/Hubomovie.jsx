@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, {  useEffect, useState } from 'react'
 import Navbar from '../components/Navbar';
-import backgroundImage from '../assets/home.jpeg';
-import MovieLogo from "../assets/homeTitle.webp";
+import backgroundImage from '../assets/One-Piece-Film-Red-But-Why-Tho.jpg';
+import MovieLogo from "../assets/homeTitle.png";
 import { FaPlay } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import {AiOutlineInfoCircle} from "react-icons/ai";
@@ -10,6 +10,7 @@ import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchMovies, getGenres } from '../store';
 import Slider from '../components/Slider';
+import Footer from '../components/Footer';
 
 export default function hubomovie() {
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -46,15 +47,16 @@ useEffect(()=>{
           <button className='flex j-center a-center' onClick={()=> navigate("/player")}>
             <FaPlay /> Play
           </button>
-          <button className='flex j-center a-center'>
-            <AiOutlineInfoCircle /> More Info
-          </button>
+          
         </div>
       </div>
     </div>
     <Slider movies={movies} />
+    <Footer />
     </Container>
+  
   )
+  
 }
 
 const Container = styled.div`
