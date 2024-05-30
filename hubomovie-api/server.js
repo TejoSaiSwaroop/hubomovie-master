@@ -7,9 +7,10 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+const dbURI = process.env.MONGODB_URI || "mongodb://localhost:27017/hubomovie";
 
 mongoose
-  .connect("mongodb://localhost:27017/hubomovie")
+  .connect(dbURI)
   .then(() => {
     console.log("DB Connection Successfull");
   })
@@ -19,6 +20,6 @@ mongoose
 
 app.use("/api/user", userRoutes);
 
-app.listen(5010, () => {
-  console.log("server started on port 5010");
+app.listen(5000, () => {
+  console.log("server started on port 5000");
 });
