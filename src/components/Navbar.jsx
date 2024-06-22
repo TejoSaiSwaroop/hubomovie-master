@@ -6,6 +6,7 @@ import logo from "../assets/logo.png";
 import { onAuthStateChanged,signOut} from "firebase/auth";
 import {firebaseAuth} from "../utils/firebase-config";
 import {FaPowerOff, FaSearch} from 'react-icons/fa';
+
 export default function Navbar() {
   const [ isScrolled,setisScrolled] = useState(false);
   window.onscroll = () => {
@@ -64,11 +65,30 @@ export default function Navbar() {
           <button onClick={() =>signOut(firebaseAuth)}>
             <FaPowerOff />
           </button>
+          <Link to="/profile">
+  <ProfileIcon />
+</Link>
         </div>
       </nav>
     </Container>
   )
 }
+const ProfileIcon = styled.div`
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #fff; /* change as needed */
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1); /* This will make the icon slightly larger when hovered */
+  }
+
+  &:active {
+    transform: scale(0.9); /* This will make the icon slightly smaller when clicked */
+  }
+`;
 const Container = styled.div`
 .scrolled{
   background-color:black;
@@ -99,6 +119,23 @@ nav{
         color:white;
         text-decoration:none;
       }
+         text-decoration: none;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #fff;
+    transition: width .7s;
+    bottom: 0;
+    left: 0;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
     }
   }
 }
@@ -117,6 +154,7 @@ nav{
     }
   }
   .search{
+  
     display:flex;
     gap:0.4rem;
     align-items:center;
@@ -128,17 +166,23 @@ nav{
       svg{
         color:white;
       }
+        
     }
     input{
-      width:0;
-      opacity:0;
-      visibility:hidden;
-      transition: 0.3s ease-in-out;
-      background-color: transparent;
-      border:none;
-      color:white;
-      &:focus{
-        outline: none;
+    width: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s ease-in-out;
+  background-color: transparent;
+  border: none;
+  color: white;
+  border-radius: 25px; /* This will create rounded corners */
+
+  &:focus {
+    outline: none;
+    width: 200px; /* or any width you want when the input is focused */
+    opacity: 1;
+    visibility: visible;
       }
     }
   }
