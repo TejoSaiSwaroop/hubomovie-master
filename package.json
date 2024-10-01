@@ -11,6 +11,8 @@
     "axios": "^0.27.2",
     "concurrently": "^8.2.2",
     "firebase": "^9.8.2",
+    "hubomovie-ui": "file:",
+    "mongodb": "^6.7.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-icons": "^4.3.1",

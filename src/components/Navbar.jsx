@@ -17,7 +17,9 @@ export default function Navbar() {
         [{ name:"Home" , link: "/"},
         { name:"TV Shows" , link: "/tv"},
         { name:"Movies" , link: "/movies"},
-        {name:"My List" , link: "/mylist"}];
+        {name:"My List" , link: "/mylist"},
+        {name:"Profile" , link: "/profile"}
+      ];
 
         const navigate = useNavigate();
         onAuthStateChanged(firebaseAuth, (currentUser) => {
@@ -65,9 +67,7 @@ export default function Navbar() {
           <button onClick={() =>signOut(firebaseAuth)}>
             <FaPowerOff />
           </button>
-          <Link to="/profile">
-  <ProfileIcon />
-</Link>
+   
         </div>
       </nav>
     </Container>

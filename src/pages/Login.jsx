@@ -6,6 +6,7 @@ import Header from '../components/Header';
 import {onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth';
 import { firebaseAuth } from '../utils/firebase-config';
 import { useNavigate } from 'react-router-dom';
+
 export default function Login() {
   const navigate = useNavigate();
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -15,13 +16,17 @@ export default function Login() {
     email:"",
     password:"",
   })
+  const [loginError, setLoginError] = useState('');
   const handleLogIn = async() => {
         try{
             const { email, password } = formValues;
             await signInWithEmailAndPassword(firebaseAuth,email,password);
+            setLoginError('');
         }
         catch(err){
-           console.log(err);
+           setLoginError('Invalid email or password');
+          console.log(err);
+
         }
   };
 
@@ -52,7 +57,7 @@ export default function Login() {
 
         
          <button onClick={()=>handleLogIn(true)}>Login</button>
-        
+         {loginError && <div className="error-message">{loginError}</div>}
               </div>
             </div>
           </div>
@@ -64,6 +69,10 @@ export default function Login() {
 
 const Container = styled.div`
 position:relative;
+.error-message{
+  color:red;
+  font-size:0.9rem;
+}
 .content{
   position:absolute;
   top:0;

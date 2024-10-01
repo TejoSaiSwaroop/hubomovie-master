@@ -7,7 +7,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-const dbURI = process.env.MONGODB_URI || "mongodb+srv://saiswaroop2674:Swaroop.com@cluster0.numxr0d.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0/hubom";
+const dbURI = process.env.MONGODB_URI || "mongodb+srv://saiswaroop2674:Swaroop.com@cluster0.numxr0d.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0/hubomovie";
 
 mongoose
   .connect(dbURI)
@@ -20,6 +20,6 @@ mongoose
 
 app.use("/api/user", userRoutes);
 
-app.listen(5069, () => {
+app.listen(5000, () => {
   console.log("server started on port 5000");
 });

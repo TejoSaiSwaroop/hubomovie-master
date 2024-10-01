@@ -5,7 +5,6 @@ import backgroundImage from '../assets/One-Piece-Film-Red-But-Why-Tho.jpg';
 import MovieLogo from "../assets/homeTitle.png";
 import { FaPlay } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import {AiOutlineInfoCircle} from "react-icons/ai";
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchMovies, getGenres } from '../store';
