@@ -5,7 +5,7 @@
 /node_modules
 /.pnp
 .pnp.js
-
+/hubomovie-api/node_modules
 # testing
 /coverage
 
